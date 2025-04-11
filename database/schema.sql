@@ -1,5 +1,13 @@
+set client_min_messages to warning;
+
+-- DANGER: this is NOT how to do it in the real world.
+-- `drop schema` INSTANTLY ERASES EVERYTHING.
+drop schema "public" cascade;
+
+create schema "public";
+
 CREATE TABLE "Users" (
-  "usersId" serial PRIMARY KEY,
+  "userId" serial PRIMARY KEY,
   "firstName" text,
   "lastName" text,
   "username" text UNIQUE,
@@ -18,4 +26,4 @@ CREATE TABLE "Movies" (
   "updatedAt" timestamptz DEFAULT (CURRENT_timestamp)
 );
 
-ALTER TABLE "Movies" ADD FOREIGN KEY ("userId") REFERENCES "Users" ("usersId");
+ALTER TABLE "Movies" ADD FOREIGN KEY ("userId") REFERENCES "Users" ("userId");
