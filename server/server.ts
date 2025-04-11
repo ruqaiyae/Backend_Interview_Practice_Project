@@ -4,6 +4,7 @@ import express from 'express';
 import { ClientError, errorMiddleware } from './lib/index.js';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
+import { authMiddleware } from './lib/authorization-middleware.js';
 
 const hashKey = process.env.TOKEN_SECRET;
 if (!hashKey) throw new Error('TOKEN_SECRET not found in .env');
@@ -83,6 +84,37 @@ app.post('/api/auth/sign-in', async (req, res, next) => {
   }
 });
 
+type MovieRating = {
+  movieId: number;
+  userId: number;
+  title: string;
+  summary: string;
+  link: string;
+  rating: number
+}
+
+app.post('/api/auth/add-movie-rating', authMiddleware, async (req, res, next) => {
+  try {
+    const { title, summary, link, rating } = req.body;
+    validateBody(title, 'Title');
+    validateBody(summary, 'Summary');
+    validateBody(link, 'Link');
+    if (!rating && rating < 1 && rating > 5) {
+  throw new ClientError(400, 'Rating must be a number between 1 and 5')
+}
+    const sql = `
+                insert into "Movies" ("userId", "title", "summary", "link", "rating")
+                values ($1, $2, $3, $4, $5)
+                returning *;
+                `;
+    const params = [req.user?.userId, title, summary, link, rating];
+    const response = await db.query(sql, params);
+    const movieRating = response.rows[0] as MovieRating;
+    res.status(201).json(movieRating);
+  } catch (err) {
+    next(err);
+  }
+});
 
 app.use(errorMiddleware);
 

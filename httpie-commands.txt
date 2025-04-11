@@ -6,3 +6,6 @@ For sign-in
 http POST :8080/api/auth/sign-in username=janesmith password=Jane123@
 http POST :8080/api/auth/sign-in username=jacksmith password=Jack123@
 
+For adding movie rating
+http POST :8080/api/auth/add-movie-rating title="Inception" summary="A skilled thief is given a chance at redemption if he can successfully perform inception: planting an idea in someone’s subconscious." link="https://www.example.com/inception" rating:=5 Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlNtaXRoIiwidXNlcm5hbWUiOiJqYW5lc21pdGgiLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTExVDIyOjUyOjQyLjU5OFoiLCJpYXQiOjE3NDQ0MTIxNzd9.81JaVD5QTUKN0vhyrUxnbCbAPMXq1x09wbkiWLOR-SI"
+http POST :8080/api/auth/add-movie-rating title="The Grand Budapest Hotel" summary="The adventures of a legendary concierge at a famous hotel between the wars and his friendship with a young employee." link="https://www.example.com/grand-budapest" rating:=4 Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImZpcnN0TmFtZSI6IkphY2siLCJsYXN0TmFtZSI6IlNtaXRoIiwidXNlcm5hbWUiOiJqYWNrc21pdGgiLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTExVDIyOjUzOjA4LjczMVoiLCJpYXQiOjE3NDQ0MTIyMDR9.GtS_dSfFBUphv5ZzMDySZiC3mXfmA00q2NlB6-ZZVKU"
