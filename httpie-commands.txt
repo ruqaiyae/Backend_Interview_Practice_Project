@@ -1,0 +1,8 @@
+For sign-up
+http POST :8080/api/auth/sign-up firstName=Jane lastName=Smith username=janesmith password=Jane123@
+http POST :8080/api/auth/sign-up firstName=Jack lastName=Smith username=jacksmith password=Jack123@
+
+For sign-in
+http POST :8080/api/auth/sign-in username=janesmith password=Jane123@
+http POST :8080/api/auth/sign-in username=jacksmith password=Jack123@
+
