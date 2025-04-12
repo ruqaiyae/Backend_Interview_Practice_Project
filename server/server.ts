@@ -152,6 +152,30 @@ app.put(
   }
 );
 
+app.delete(
+  '/api/auth/movie-rating/:movieId/delete',
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      const movieId = Number(req.params.movieId);
+      validateMovieId(movieId);
+      const sql = `delete from "Movies"
+                  where "userId" = $1 and "movieId" = $2
+                  returning *;
+                  `;
+      const params = [req.user?.userId, movieId];
+      const response = await db.query<MovieRating>(sql, params);
+      const movieRating = response.rows[0];
+      if (!movieRating) {
+        throw new ClientError(404, 'Movie not found');
+      }
+      res.sendStatus(204);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
