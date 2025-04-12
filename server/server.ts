@@ -144,8 +144,8 @@ app.put(
                   `;
                   const params = [req.user?.userId, title, summary, link, rating, movieId];
       const response = await db.query<MovieRating>(sql, params);
-      const story = response.rows[0];
-      res.json(story);
+      const movieRating = response.rows[0];
+      res.json(movieRating);
     } catch (err) {
       next(err);
     }
@@ -172,6 +172,25 @@ app.delete(
       res.sendStatus(204);
     } catch (error) {
       next(error);
+    }
+  }
+);
+
+app.get(
+  '/api/auth/movie-rating',
+  authMiddleware,
+  async (req, res, next) => {
+    try {
+      const sql = `select * from "Movies"
+                  where "userId" = $1
+                  order by "movieId";
+                  `;
+      const params = [req.user?.userId];
+      const response = await db.query<MovieRating[]>(sql, params);
+      const movieRating = response.rows;
+      res.json(movieRating);
+    } catch (err) {
+      next(err);
     }
   }
 );

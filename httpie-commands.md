@@ -301,3 +301,77 @@ X-Powered-By: Express
 
 
 
+# For reading all movie ratings
+
+## Request
+http :8080/api/auth/movie-rating Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlNtaXRoIiwidXNlcm5hbWUiOiJqYW5lc21pdGgiLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTExVDIzOjE0OjQ2LjE0NloiLCJpYXQiOjE3NDQ0MTMyOTZ9.eILZ1l2b2PCwPvq0nP7DYsLy_wcBUagcr9Bf5T8DdJ8"
+
+## Response
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 583
+Content-Type: application/json; charset=utf-8
+Date: Sat, 12 Apr 2025 00:28:26 GMT
+ETag: W/"247-h9b1CDOTGdN5Si0y5ukWmb0otks"
+Keep-Alive: timeout=5
+X-Powered-By: Express
+
+[
+    {
+        "createdAt": "2025-04-12T00:09:08.107Z",
+        "link": "https://www.example.com/inception",
+        "movieId": 1,
+        "rating": 5,
+        "summary": "A skilled thief is given a chance at redemption if he can successfully perform inception: planting an idea in someone’s subconscious.",
+        "title": "Inception",
+        "updatedAt": "2025-04-12T00:09:08.107Z",
+        "userId": 1
+    },
+    {
+        "createdAt": "2025-04-12T00:09:25.860Z",
+        "link": "https://www.example.com/finding-nemo",
+        "movieId": 3,
+        "rating": 4,
+        "summary": "A clownfish travels across the ocean to find his missing son.",
+        "title": "Finding Memo",
+        "updatedAt": "2025-04-12T00:09:25.860Z",
+        "userId": 1
+    }
+]
+
+
+## Request
+http :8080/api/auth/movie-rating Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImZpcnN0TmFtZSI6IkphY2siLCJsYXN0TmFtZSI6IlNtaXRoIiwidXNlcm5hbWUiOiJqYWNrc21pdGgiLCJjcmVhdGVkQXQiOiIyMDI1LTA0LTExVDIzOjE0OjUwLjg4MloiLCJpYXQiOjE3NDQ0MTMzMDB9.q0VNNwZWnChYkrYWt2ux7m3SrPDAsNKkGvD_TLLigXo"
+
+## Response 
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 606
+Content-Type: application/json; charset=utf-8
+Date: Sat, 12 Apr 2025 00:29:09 GMT
+ETag: W/"25e-KU1zI20tZl6/TCocqUliOHQ4HCo"
+Keep-Alive: timeout=5
+X-Powered-By: Express
+
+[
+    {
+        "createdAt": "2025-04-12T00:09:18.606Z",
+        "link": "https://www.example.com/grand-budapest",
+        "movieId": 2,
+        "rating": 4,
+        "summary": "The adventures of a legendary concierge at a famous hotel between the wars and his friendship with a young employee.",
+        "title": "The Grand Budapest Hotel",
+        "updatedAt": "2025-04-12T00:09:18.606Z",
+        "userId": 2
+    },
+    {
+        "createdAt": "2025-04-12T00:09:32.229Z",
+        "link": "https://www.example.com/the-matrix",
+        "movieId": 4,
+        "rating": 5,
+        "summary": "A hacker discovers the world he lives in is a simulated reality controlled by machines.",
+        "title": "The Matrix",
+        "updatedAt": "2025-04-12T00:09:32.229Z",
+        "userId": 2
+    }
+]
